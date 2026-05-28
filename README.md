@@ -2,7 +2,7 @@
 
 Este repositório contém o desenvolvimento do banco de dados relacional para um **Sistema de Gestão de Linha de Produção Automated**, desenvolvido como parte do projeto prático da disciplina de Banco de Dados no **Inatel (Instituto Nacional de Telecomunicações)**.
 
-O sistema simula o fluxo completo de fabricação de uma indústria automatizada voltada para componentes de robótica, especificamente para a categoria **VSSS (Very Small Size Soccer)**, integrando conceitos avançados de Engenharia de Produção, Computação e Automação Industrial.
+O sistema simula o fluxo completo de fabricação de uma indústria automatizada voltada para componentes de robótica, especificamente para a categoria **VSSS (Very Small Size Soccer)**, integrando conceitos avançados de Engenharia de Produção, Computação, Software e Automação Industrial.
 
 ---
 
@@ -45,16 +45,6 @@ O script SQL principal (`script_entrega_2_final.sql`) foi construído de forma l
 
 ---
 
-## 💻 Como Executar o Script
-
-1. Certifique-se de ter um servidor MySQL ativo instalado localmente ou em nuvem.
-2. Abra sua ferramenta de gerência de preferência (como o **MySQL Workbench**).
-3. Copie o código contido no arquivo `.sql` deste repositório e cole em uma aba de consulta.
-4. Execute o script completo (clicando no ícone do raio). 
-5. O script foi projetado de forma idempotente, ou seja, possui tratamentos de limpeza (`DROP DATABASE/ROLE/USER IF EXISTS`) para que possa ser reexecutado múltiplas vezes seguidas sem gerar conflitos ou erros de duplicação.
-
----
-
 ## 👥 Integrantes do Grupo
 
 Projeto desenvolvido com orgulho pelos acadêmicos de Engenharia do **Inatel**:
@@ -63,5 +53,3 @@ Projeto desenvolvido com orgulho pelos acadêmicos de Engenharia do **Inatel**:
 * **Nathan Arruola da Costa**
 * **Fuad Murad**
 
----
-Desenvolvido em Santa Rita do Sapucaí, MG - Polo do Vale da Eletrônica.
