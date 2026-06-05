@@ -1,152 +1,55 @@
-# ⚙️ **Projeto: Simulador de Linha de Produção**
-🧠 *Integra Engenharia de Produção e Computação usando Programação Orientada a Objetos (Java)*
+# Sistema de Gestão de Linha de Produção (Manufatura de Robótica - VSSS)
+
+Este repositório contém o desenvolvimento do banco de dados relacional para um **Sistema de Gestão de Linha de Produção Automated**, desenvolvido como parte do projeto prático da disciplina de Banco de Dados no **Inatel (Instituto Nacional de Telecomunicações)**.
+
+O sistema simula o fluxo completo de fabricação de uma indústria automatizada voltada para componentes de robótica, especificamente para a categoria **VSSS (Very Small Size Soccer)**, integrando conceitos avançados de Engenharia de Produção, Computação, Software e Automação Industrial.
 
 ---
 
-## 🎯 **Objetivo do Projeto**
-Desenvolver um simulador que representa uma **linha de produção automatizada**, composta por máquinas que processam produtos em sequência, registram resultados e geram relatórios de desempenho.
+## 📌 Visão Geral do Projeto
 
-O projeto demonstra conceitos fundamentais de **Engenharia de Produção** (fluxo produtivo, gargalos, tempo de ciclo) e de **Computação** (POO, threads, exceções, arquivos, interfaces e pacotes).
+O objetivo principal deste banco de dados é gerenciar e registrar todo o fluxo de fabricação de produtos, o maquinário envolvido nas etapas do processo, os operadores escalados por turno e os laudos de controle de qualidade gerados ao fim da linha.
 
----
-
-## 🏭 **Conceito de Engenharia de Produção Aplicado**
-- Fluxo produtivo e sequenciamento de operações.
-- Simulação de falhas mecânicas e manutenção.
-- Controle de qualidade e rejeição de peças.
-- Registro e análise de desempenho (Logs).
+A arquitetura do sistema foi projetada para garantir:
+* **Rastreabilidade total:** Acompanhamento de cada peça produzida desde a montagem até a inspeção final.
+* **Controle de manutenções:** Registro do histórico de reparos e falhas mecânicas/elétricas de todo o maquinário industrial.
+* **Auditoria de qualidade:** Controle rigoroso do status de aprovação de cada peça através de laudos técnicos detalhados.
 
 ---
 
-## 💻 **Conceitos de Programação Utilizados**
-✅ Classes e Objetos  
-✅ Herança e Polimorfismo  
-✅ Interfaces (`Registravel`, `Runnable`)  
-✅ Pacotes  
-✅ Modificadores de acesso e Encapsulamento  
-✅ Construtores  
-✅ Atributos e métodos `static`  
-✅ Coleções e Arrays  
-✅ **Threads
-✅ **Java NIO (Path, Files)** para I/O moderno  
-✅ Exceções personalizadas (`RuntimeException`)
+## 🛠️ Estrutura do Banco de Dados (Modelagem Lógica)
+
+O modelo implementado atende aos requisitos de integridade referencial, abrangendo as três cardinalidades clássicas de um modelo relacional:
+
+1. **Produto:** Representa os itens fabricados (Ex: Placas base VSSS, motores com encoder, chassis, módulos de rádio).
+2. **Relatorio_Inspecao (Relacionamento 1:1):** Cada produto gerado passa obrigatoriamente por uma única inspeção detalhada de controle de qualidade.
+3. **Maquina:** Representa os equipamentos físicos da planta industrial (CNC, Pick and Place, Forno Reflow, Estações de Teste).
+4. **Manutencao (Relacionamento 1:N):** Uma máquina pode sofrer múltiplas paradas ou quebras ao longo de sua vida útil, mas cada laudo técnico de manutenção pertence a uma única máquina.
+5. **Operador:** Funcionários técnicos habilitados a operar o maquinário da fábrica.
+6. **Operador_has_Maquina (Relacionamento N:M):** Tabela associativa que gerencia a escala de trabalho, permitindo que múltiplos operadores operem diferentes máquinas dependendo do revezamento de turnos e treinamentos técnicos.
 
 ---
 
-## 🧩 **Estrutura de Pacotes**
-```
-br.producao.maquinas   -> Lógica das máquinas (Corte, Montagem, Inspeção)
-br.producao.produtos   -> Definição do produto e gravação de arquivo
-br.producao.simulacao  -> Controle do fluxo (LinhaProducao, Simulador, TarefaProducao)
-br.producao.arquivos   -> Leitura de configurações externas
-br.producao.excecoes   -> Erros personalizados do sistema
-```
+## 🚀 Conteúdo da Segunda Entrega
+
+O script SQL principal (`script_entrega_2_final.sql`) foi construído de forma limpa e otimizada (sem códigos poluídos gerados por ferramentas automáticas), contemplando os seguintes requisitos acadêmicos:
+
+* **DDL Completo:** Criação automatizada de todas as tabelas com tipos de dados coesos (`INT`, `VARCHAR`, `DECIMAL`, `DATETIME`, `TINYINT`, `TEXT`).
+* **Carga Inicial de Dados:** Inserção de no mínimo 5 registros realistas e integrados para cada entidade do sistema.
+* **Controle de Acesso e Segurança (DCL):** * Criação de uma Role específica para operação (`role_operacao_fabrica`) com permissões restritas de `SELECT` e `INSERT`.
+  * Criação de 2 usuários arbitrários (`usr_auditor` e `usr_tecnico`) associados por padrão a esta role.
+* **Objetos Programáveis incorporados (DML Avançado):**
+  * **View (`vw_rastreabilidade_produtos`):** Visão unificada criada para auditorias rápidas, cruzando os produtos com seus respectivos laudos de inspeção.
+  * **Stored Procedure (`sp_registrar_falha`):** Procedimento automatizado para o registro ágil de novas manutenções preventivas ou corretivas na data corrente.
+  * **Trigger (`trg_validar_custo_produto`):** Gatilho de validação que impede a inserção de produtos com custos de produção negativos, blindando as regras de negócio financeiras da fábrica.
 
 ---
-# 🧱 Principais Classes e Interfaces
 
-## 🏗️ Classe Abstrata `Maquina`
+## 👥 Integrantes do Grupo
 
-Base para todas as máquinas da fábrica. Define o contrato processar().
+Projeto desenvolvido com orgulho pelos acadêmicos de Engenharia do **Inatel**:
 
-```Java
-public abstract class Maquina {
-    protected String id;
-    protected int tempoProcesso;
-    // ...
-    public abstract void processar(Produto p) throws maquinaQuebradaException;
-}
-```
-## ⚙️ Subclasses de Máquina
+* **Kaynan H Dias de Melo**
+* **Nathan Arruola da Costa**
+* **Fuad Murad**
 
-    MaquinaCorte: Simula o corte e possui chance de falha mecânica (Lâmina partir).
-
-    MaquinaMontagem: Realiza a montagem das peças.
-
-    MaquinaInspecao: Verifica a qualidade e pode rejeitar o produto (10% de chance).
-
-## 📦 Classe Produto
-
-Implementa a lógica de status e gravação usando Java NIO.
-
-```Java
-public class Produto implements Registravel {
-    // ...
-    @Override
-    public void registrarEmArquivo() {
-        Path caminho = Paths.get("relatorio_producao.txt");
-        // Usa Files.writeString com opção APPEND para criar log histórico
-        Files.writeString(caminho, conteudo, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-    }
-}
-```
-## ⚡ Threads (Implementação Clássica)
-
-O projeto utiliza a interface Runnable para definir tarefas independentes, permitindo a fabricação paralela de vários produtos.
-
-    Classe TarefaProducao: Implementa Runnable e encapsula toda a lógica de fabricação de um único carro.
-
-    No Main: Instanciamos objetos Thread passando as tarefas como parâmetro.
-
-
-```Java
-// Exemplo do código no Main
-TarefaProducao tarefa = new TarefaProducao("Carro A", etapas);
-Thread t1 = new Thread(tarefa);
-t1.start(); // Inicia a produção paralela
-```
-
-## 🧠 Classes de Simulação
-
-LinhaProducao
-
-Gerencia a passagem do produto pelas etapas sequenciais (Corte -> Montagem -> Inspeção) e trata exceções de falha.
-
-Simulador
-
-Classe utilitária que orquestra o início do processo e garante o registro final do produto.
-
-## 📂 Leitura de Configuração (Java NIO)
-
-O sistema lê os tempos de processo de um arquivo externo configuracao.txt localizado na raiz do projeto. Isso permite ajustar a velocidade da fábrica sem recompilar o código.
-
-```Java
-// Exemplo de configuração
-CORTE=5
-MONTAGEM=3
-INSPECAO=2
-```
-## ❗ Exceções Personalizadas
-
-O sistema possui tratamento robusto de erros:
-
-    maquinaQuebradaException: Lançada quando ocorre uma falha mecânica (ex: na MaquinaCorte).
-
-    ConfiguracaoNaoEncontradaException: Prevista para erros críticos na leitura do arquivo de configuração.
-
-## 📊 Exemplo de Saída (Console)
-
-```
-
-=== SISTEMA DE PRODUÇÃO PARALELA ===
-
->> Thread iniciada para: Carro Modelo A
->> Thread iniciada para: Carro Modelo B
-[Corte] A cortar: Carro Modelo A
-[Corte] A cortar: Carro Modelo B
-[Corte] Finalizado: Carro Modelo A
-[Montagem] A montar: Carro Modelo A
-...
-[Inspeção] APROVADO: Carro Modelo A
-[Arquivo] Relatório gravado para: Carro Modelo A
-```
-
-## 📝 Formato do Relatório (Arquivo)
-
-O arquivo relatorio_producao.txt é gerado automaticamente:
-```
-
-Produto ID: 1 | Nome: Carro Modelo A | Status: APROVADO
-Produto ID: 2 | Nome: Carro Modelo B | Status: REJEITADO
-Produto ID: 3 | Nome: Carro Modelo C | Status: APROVADO
-```
