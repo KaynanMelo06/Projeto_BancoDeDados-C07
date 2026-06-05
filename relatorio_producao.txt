@@ -1,0 +1,3 @@
+Produto ID: 3 | Nome: Carro Modelo A | Status: APROVADO
+Produto ID: 1 | Nome: Carro Modelo B | Status: APROVADO
+Produto ID: 2 | Nome: Carro Modelo C | Status: APROVADO
