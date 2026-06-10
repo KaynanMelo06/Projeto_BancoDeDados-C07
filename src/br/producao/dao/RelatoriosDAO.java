@@ -25,7 +25,8 @@ public class RelatoriosDAO {
         String sql = "SELECT o.nome_completo, m.codigo_identificacao, m.tipo_etapa " +
                 "FROM Operador o " +
                 "INNER JOIN Operador_has_Maquina om ON o.id_operador = om.Operador_id_operador " +
-                "INNER JOIN Maquina m ON om.Maquina_id_maquina = m.id_maquina";
+                "INNER JOIN Maquina m ON om.Maquina_id_maquina = m.id_maquina " + // <-- ESPAÇO AQUI NO FINAL
+                "ORDER BY o.nome_completo ASC";
 
         System.out.println("\n--- RELATÓRIO DE OPERADORES POR MÁQUINA ---");
         executarSelectJoin(sql, "nome_completo", "codigo_identificacao", "tipo_etapa");

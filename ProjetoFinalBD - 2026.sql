@@ -91,9 +91,7 @@ INSERT INTO Manutencao (data_falha, descricao_erro, custo_reparo, id_maquina) VA
 INSERT INTO Operador (nome_completo, salario, turno_noturno) VALUES
 ('Nathan Arruola da Costa', 3500.00, 0),
 ('Kaynan H Dias de Melo', 3500.00, 0),
-('Fuad Murad', 3500.00, 1),
-('Carlos Silva', 2800.00, 1),
-('Mariana Souza', 3100.00, 0);
+('Fuad Murad', 3500.00, 1);
 
 
 INSERT INTO Operador_has_Maquina (Operador_id_operador, Maquina_id_maquina) VALUES
@@ -101,7 +99,7 @@ INSERT INTO Operador_has_Maquina (Operador_id_operador, Maquina_id_maquina) VALU
 (1, 3), -- Nathan opera Forno Reflow
 (2, 1), -- Kaynan opera CNC
 (3, 4), -- Fuad opera Estação de Teste (Noturno)
-(4, 5); -- Carlos opera Impressora 3D (Noturno)
+(2, 5); -- Kaynan opera Impressora 3D (Noturno)
 
 -- 3 e 4. GERENCIAMENTO DE ACESSO (Usuários e Roles)
 

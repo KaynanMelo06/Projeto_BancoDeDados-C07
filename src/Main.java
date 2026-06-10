@@ -2,13 +2,14 @@ import br.producao.arquivos.LeitorConfiguracao;
 import br.producao.dao.*;
 import br.producao.maquinas.*;
 import br.producao.simulacao.TarefaProducao;
+import br.producao.models.ProdutoModel;
 
 import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== SISTEMA DE PRODUÇÃO PARALELA (VSSS) ===\n");
+        System.out.println("=== SISTEMA DE PRODUÇÃO PARALELA1 ===\n");
 
         // --- PARTE 1: SIMULAÇÃO COM THREADS ---
         Map<String, Integer> config = LeitorConfiguracao.ler("configuracao.txt");
@@ -19,8 +20,11 @@ public class Main {
 
         Maquina[] etapas = { mCorte, mMontagem, mInspecao };
 
-        Thread t1 = new Thread(new TarefaProducao("Placa Base VSSS v1.0", etapas));
+        Thread t1 = new Thread(new TarefaProducao("Placa Base VSSS", etapas));
         Thread t2 = new Thread(new TarefaProducao("Motor DC 12V", etapas));
+
+        
+
 
         t1.start();
         t2.start();
@@ -35,6 +39,7 @@ public class Main {
 
         // --- PARTE 2: MENU DO BANCO DE DADOS ---
         executarMenuBancoDeDados();
+
     }
 
     public static void executarMenuBancoDeDados() {
@@ -52,11 +57,12 @@ public class Main {
             System.out.println("5. Ver Relatório de Inspeção (JOIN 1)");
             System.out.println("6. Ver Relatório de Manutenção (JOIN 2)");
             System.out.println("7. Ver Operadores por Máquina (JOIN 3)");
+            System.out.println("8. Inserir Novo Produto"); // <-- NOVA OPÇÃO AQUI
             System.out.println("9. Sair");
             System.out.print("Escolha uma opcao: ");
 
             opcao = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Limpa o buffer do teclado
 
             switch (opcao) {
                 case 1:
@@ -71,8 +77,8 @@ public class Main {
                     System.out.print("ID do Produto: ");
                     int id = scanner.nextInt();
                     System.out.print("Novo Custo: ");
-                    double custo = scanner.nextDouble();
-                    produtoDAO.atualizarCusto(id, custo);
+                    double custoAtualizado = scanner.nextDouble();
+                    produtoDAO.atualizarCusto(id, custoAtualizado);
                     break;
                 case 4:
                     System.out.print("ID do Produto a deletar: ");
@@ -87,6 +93,20 @@ public class Main {
                     break;
                 case 7:
                     relatoriosDAO.relatorioOperadoresMaquinas();
+                    break;
+                case 8: // <-- LÓGICA DE INSERÇÃO AQUI
+                    System.out.print("Digite o nome do modelo: ");
+                    String nomeModelo = scanner.nextLine();
+
+                    System.out.print("Digite o custo de produção: ");
+                    double custo = scanner.nextDouble();
+
+                    // Cria o objeto ProdutoModel (O ID vai como 0 pois o BD tem AUTO_INCREMENT)
+                    // Usamos LocalDateTime.now() para pegar a data e hora atual do sistema
+                    ProdutoModel novoProduto = new ProdutoModel(0, nomeModelo, custo, java.time.LocalDateTime.now());
+
+                    // Agora sim, enviamos o objeto preenchido para o DAO!
+                    produtoDAO.inserir(novoProduto);
                     break;
                 case 9:
                     System.out.println("Encerrando o sistema...");

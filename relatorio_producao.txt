@@ -1,3 +1,39 @@
 Produto ID: 3 | Nome: Carro Modelo A | Status: APROVADO
 Produto ID: 1 | Nome: Carro Modelo B | Status: APROVADO
 Produto ID: 2 | Nome: Carro Modelo C | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: REJEITADO
+Produto ID: 1 | Nome: Placa Base VSSS v1.0 | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS v1.0 | Status: REJEITADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS v1.0 | Status: REJEITADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: REJEITADO
+Produto ID: 1 | Nome: Placa Base VSSS v1.0 | Status: REJEITADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 1 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 2 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: REJEITADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 2 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 1 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 2 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 1 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: REJEITADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 2 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 2 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 2 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 1 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
+Produto ID: 1 | Nome: Placa Base VSSS | Status: APROVADO
+Produto ID: 2 | Nome: Motor DC 12V | Status: APROVADO
